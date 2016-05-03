@@ -3,64 +3,73 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package question1;
+package q1;
 
+//import jdk.nashorn.internal.parser.Scanner;
 import java.util.Scanner;
 
 /**
  *
- * @author SpencerLee
+ * @author nyg7208
  */
 public class NewClass {
 
-    static String num;
+    public static Scanner in;
 
-    public static void main(String args[]) {
-
-        Scanner keyboard = new Scanner(System.in);
-        System.out.print("Please input: ");
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // Scanner in;
+        in = new Scanner(System.in);
+        String line;
+        int sum = 0;
+        System.out.print("Input: ");
         do {
-            num = keyboard.nextLine();
-        } while (!isValidAnswer(num));
-        int num1 = Integer.parseInt(num);
-        if (num1 % 2 != 0) {
-            if (num1 == 1) {
-                System.out.println("No odd");
-            } else {
-                int odd = num1;
-                int sum = 0;
-                for (int i = (num1 - 1) / 2; i > 0; i--) {
-                    odd = odd - 2;
-                    System.out.print(odd);
-                    sum += odd + 1;
-                }
-                System.out.println("Sum:" + sum);
+            line = in.nextLine();
+        } while (!isValidAnswer(line));
+        int num = Integer.parseInt(line);
+        if (num % 2 == 0) {
+            if (num == 0) {
+                System.out.println("No even numbers found");
+                return;
             }
-        } else if (num1 == 2) {
-            System.out.println("No even");
-        } else {
-            int odd = num1 - 1;
-            int sum = 0;
-            System.out.print(odd);
-            for (int i = (num1 - 1) / 2; i > 0; i--) {
-                odd = odd - 2;
-                System.out.print(odd);
-                sum += odd + 1;
+            int num1 = num;
+            for (int a = num / 2; a > 0; a--) {
+                num1 = num1 - 2;
+                sum += num1;
+
             }
-            System.out.println("Sum:" + sum);
+            System.out.println("Sum: " + sum);
+        } else if (num % 2 != 0) {
+            if (num == 1) {
+                System.out.println("No odd numbers found");
+                return;
+            }
+
+            int num2 = num;
+            for (int a = num / 2; a > 0; a--) {
+                num2 = num2 - 2;
+                System.out.print(num2 + " ");
+
+            }
         }
+
     }
 
-    public static boolean isValidAnswer(String answer) {
+    public static boolean isValidAnswer(String line) {
         try {
-            int a = Integer.parseInt(num);
-            if (a <= 0) {
-                throw new Exception("");
+            int a = Integer.parseInt(line);
+            if (a < 0) {
+                throw new Exception();
             }
+
         } catch (Exception e) {
-            System.out.print("Invalid. Please input again: ");
+            System.out.print("Not valid.Input again: ");
             return false;
         }
+
         return true;
     }
+
 }
