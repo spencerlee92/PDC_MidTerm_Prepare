@@ -18,3 +18,6 @@ SumAndAvg-------------------------------Find the average of a given set of numbe
 Sample Output:
 1 2 3
 Count: 3 Sum: 6 Avg: 2
+
+
+PrintNums--------------------------------	Using two separate threads to print the odd numbers and the even numbers between 1 and 10 respectively. 
